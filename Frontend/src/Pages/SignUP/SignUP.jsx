@@ -6,7 +6,7 @@ const SignUP = () => {
         <h1 className="text-3xl text-white">SINGUP</h1>
       <div className="w-full">
         <label className="input input-bordered flex items-center gap-2">
-          <input type="text" className="grow" placeholder="Full Name" />
+          <input type="text" className="grow px-20 align placeholder:" placeholder="Full Name" />
         </label>
       </div>
       <div>
@@ -19,7 +19,7 @@ const SignUP = () => {
           >
             <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
           </svg>
-          <input type="text" className="grow" placeholder="Username" />
+          <input type="text" className="grow px-20" placeholder="Username" />
         </label>
       </div>
       <div>
@@ -36,7 +36,7 @@ const SignUP = () => {
               clipRule="evenodd"
             />
           </svg>
-          <input type="password" className="grow" placeholder="Password" />
+          <input type="password" className="grow px-20" placeholder="Password" />
         </label>
       </div>
       <div>
@@ -55,13 +55,13 @@ const SignUP = () => {
           </svg>
           <input
             type="password"
-            className="grow"
+            className="grow px-20"
             placeholder="Confirm Password"
           />
         </label>
       </div>
        <GenderComp/>
-      <a href="#" className=" text-white hover:text-emerald-500">Already have an accout ?</a>
+      <a href="#" className=" text-white py-2 hover:text-emerald-500">Already have an accout ?</a>
       <button className="btn btn-outline w-full border-emerald-500">Sign Up</button>
     </div>
   );
