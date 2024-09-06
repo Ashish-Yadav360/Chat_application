@@ -3,9 +3,10 @@ import bycrpt from "bcryptjs";
 import { genereateTokenAndSetCookie } from "../Utils/Jsonwebtokens.js";
 export const signup = async (req, res) => {
   try {
-    const { fullname, username, password, confirmpassowrd, gender } = req.body;
-    if (password !== confirmpassowrd) {
-      return res.status(400).json({ error: "passwords do not match" });
+    const { fullname, username, password, confirmpassword, gender } = req.body;
+    if (password !== confirmpassword) {
+      console.log(fullname,username,password,confirmpassword,gender);
+      return res.status(400).json({ error: `Passwords do not Match Server Side`});
     }
 
     const user = await User.findOne({ username });
@@ -53,11 +54,12 @@ export const signup = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { username, password } = req.body;
+     console.log(username,password);``
     const user = await User.findOne({ username });
     const ispasswordcorrect = await bycrpt.compare(password, user?.password|| "");
     if(!user || !ispasswordcorrect){
-      res.status(401).json({message:"Incorrect Login Credenatials"});
-    }else{
+      res.status(401).json({error:"Incorrect Login Credenatials"});
+    }else{  
       genereateTokenAndSetCookie(user._id,res);
        res.status(200).json({
         _id: user._id,
