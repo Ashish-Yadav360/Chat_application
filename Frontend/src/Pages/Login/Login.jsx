@@ -1,17 +1,18 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useLogin from "../../../Hooks/useLogin";
+import loginImage from "../../../utils/logins.png";
 const Login = () => {
-  const {loading, login } = useLogin();
+  const { loading, login } = useLogin();
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login({username,password});
+    await login({ username, password });
   };
   return (
+    <>
     <div className="flex flex-col gap-4 items-center justify-center p-2 min-h-screen ">
       <h1 className=" text-3xl text-white">LOGIN</h1>
       <form className="forums" onSubmit={handleSubmit}>
@@ -30,7 +31,7 @@ const Login = () => {
               className="grow px-12"
               placeholder="Username"
               value={username}
-              onChange={(e) =>setUserName(e.target.value)}
+              onChange={(e) => setUserName(e.target.value)}
             />
           </label>
         </div>
@@ -53,8 +54,7 @@ const Login = () => {
               className="grow px-12"
               placeholder="*********"
               value={password}
-              onChange={(e) =>
-                setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </label>
         </div>
@@ -64,13 +64,24 @@ const Login = () => {
         >
           Don't have an account ?
         </Link>
-        <div className="w-full">
-          <button className="btn btn-outline w-full border-emerald-500" disabled={loading}>
-            {loading ? <span className="loading-spinner loading"></span>:"Login"}
+        <div className="w-full hover:text-emerald-500">
+          <button
+            className="btn w-full bg-emerald-900 border-none hover:bg-emerald-600 text-white text-1xl text-center flex justify-center"
+            disabled={loading}
+          >
+            {loading ? (
+              <span className="loading-spinner loading"></span>
+            ) : (
+              <div className="flex flex-row gap-2 items-center justify-center">
+                <img src={loginImage} className="w-6 h-6" />
+                <div className="text-center font-bold">Login</div>
+              </div>
+            )}
           </button>
         </div>
       </form>
     </div>
+    </>
   );
 };
 

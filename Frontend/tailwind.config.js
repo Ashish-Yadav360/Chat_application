@@ -1,5 +1,3 @@
-import daisyui from 'daisyui';
-
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -9,6 +7,17 @@ export default {
   theme: {
     extend: {},
   },
+  themes: [
+    {
+        mytheme: {
+            "primary": "#a991f7",
+            "secondary": "#f6d860",
+            "accent": "#37cdbe",
+            "neutral": "#3d4451",
+            "base-100": "#ffffff",
+        },
+    },
+],
   // eslint-disable-next-line no-undef
   plugins: [require("daisyui")],
 }

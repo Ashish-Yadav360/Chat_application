@@ -2,6 +2,8 @@ import {Link } from "react-router-dom";
 import GenderComp from "./GenderComp";
 import { useState } from "react";
 import useSignup from "../../../Hooks/useSignup";
+import loginImage from "../../../utils/logins.png";
+
 
 const SignUP = () => {
   const [inputs, setInput] = useState({
@@ -21,7 +23,7 @@ const SignUP = () => {
   };
   return (
     <div className="flex flex-col gap-2 items-center justify-center h-screen">
-      <h1 className="text-3xl text-white">SINGUP</h1>
+      <h1 className="text-3xl text-white">SIGNUP</h1>
       <form className="forums" onSubmit={handleSubmit}>
         <div className="w-full">
           <label className="input input-bordered flex items-center gap-2">
@@ -114,8 +116,16 @@ const SignUP = () => {
         <Link to={"/login"} className=" text-white py-2 hover:text-emerald-500">
           Already have an accout ?
         </Link>
-        <button className="btn btn-outline w-full border-emerald-500" disabled={loading}>
-          {loading? <span className="loading loading-spinner"></span> :"Sign Up"  }
+        <button className="btn bg-emerald-900 border-none text-white hover:bg-emerald-600 w-full border-emerald-500" disabled={loading}>
+        {loading ? (
+              <span className="loading-spinner loading"></span>
+            ) : (
+              <div className="flex flex-row gap-2 items-center justify-center">
+                <img src={loginImage} className="w-6 h-6" />
+                <div className="text-center font-bold">Sign up</div>
+              </div>
+            )}
+        
         </button>
       </form>
     </div>

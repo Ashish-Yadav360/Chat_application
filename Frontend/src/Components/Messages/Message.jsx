@@ -1,15 +1,25 @@
-
-const Message = () => {
+import { useAuthContext } from "../../../Context/AuthContext"
+import useConversation from "../../../Zustand/useConversation";
+import formatDate from "../../../utils/formatDate";
+const Message = ({message}) => {
+ const{authUser}=  useAuthContext();
+ const{selectedConversation} = useConversation();
+ const fromMe= message.senderId===authUser._id;
+ const chatClassname = fromMe?"chat-end":"chat-start";
+ const profilepic = fromMe?authUser.profilepic:selectedConversation.profilepic;
+ const bubblecolor = fromMe?"bg-emerald-800":"bg-zinc-950"
+ const date = new Date(message.createdAt);
+ const dateString = formatDate(date);
   return (
     <div className="overflow-auto">
-    <div className="chat chat-end mr-5">
+    <div className={`chat ${chatClassname} mr-5 ml-5 mt-1`}>
       <div className="chat-image avatar">
          <div className="w-10 rounded-full">
-            <img src="https://avatar.iran.liara.run/public/boy" alt="" />
+            <img src={profilepic} alt="" />
          </div>
       </div>
-        <div className="chat-bubble text-white bg-emerald-800"> Hey India what's New with you</div>
-        <div className="chat-footer opacity-50 text-xs flex gap-1 items-center">12:42</div>
+        <div className={`chat-bubble text-white ${bubblecolor}`}>{message.message}</div>
+        <div className="chat-footer opacity-40 textarea-xs flex gap-1 items-center">{dateString}</div>
     </div>
  </div>
   )

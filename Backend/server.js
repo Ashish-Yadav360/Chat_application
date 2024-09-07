@@ -5,9 +5,11 @@ import messageRoute from './routes/message.route.js'
 import userRoute from './routes/user.routes.js';
 import connectToMongoDB from "./DB/connectMongoDB.js";
 import cookieParser from "cookie-parser";
+import { Server } from "socket.io";
 const app = express();
 const PORT = process.env.PORT || 5000;
 dotenv.config();
+
 // app.get('/', (req, res)=>{
 //     res.send('Hello from Backend');
 // })
