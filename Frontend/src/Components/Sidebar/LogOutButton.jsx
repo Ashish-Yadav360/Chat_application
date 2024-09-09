@@ -9,7 +9,7 @@ const LogOutButton = () => {
     <div className="mt-auto flex flex-row justify-between">
       {" "}
       {loading ? (
-        <span className="laoding loading-spinner"></span>
+        <span className="loading loading-spinner"></span>
       ) : (
         <RiLogoutBoxLine
           onClick={logout}

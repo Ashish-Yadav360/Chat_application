@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
 import useGetMessages from "../../../Hooks/useGetMessages";
-import Skeleton from "../../../utils/Skeleton";
 import Message from "./Message";
+import useMessageListener from "../../../Hooks/useMessageListener";
 const SendMessage = () => {
   const {loading,messages} = useGetMessages();
+  useMessageListener();
    const lastMessageref = useRef();
     console.log("MESSAGES",messages);
     console.log(messages.map(message=>message._id));

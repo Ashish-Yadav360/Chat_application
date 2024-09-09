@@ -1,17 +1,20 @@
 /* eslint-disable react/prop-types */
 
+import { useSocketContext } from "../../../Context/SocketContext";
 import useConversation from "../../../Zustand/useConversation";
 
 // eslint-disable-next-line react/prop-types
 const Conversation = ({conversation,emoji}) => {
  const {selectedConversation, setSelectedConversation} =  useConversation();
  const isSelected = selectedConversation?._id===conversation._id;
+ const {onlineUser} = useSocketContext();
+ const isOnline = onlineUser.includes(conversation._id);
   return (
      <>
     <div className={`flex gap-2 items-center hover:bg-slate-800 rounded p-5 cursor-pointer py-4.5 ${isSelected?"bg-slate-800":""}`}
       onClick={()=>setSelectedConversation(conversation)}
     >
-      <div className="avatar online">
+      <div className={`${isOnline?"avatar online":""}`}>
         <div className="w-12 rounded-full">
           <img src={conversation.profilepic} />
         </div>

@@ -5,8 +5,7 @@ import messageRoute from './routes/message.route.js'
 import userRoute from './routes/user.routes.js';
 import connectToMongoDB from "./DB/connectMongoDB.js";
 import cookieParser from "cookie-parser";
-import { Server } from "socket.io";
-const app = express();
+import {server,io,app} from './Socket/socket.js'
 const PORT = process.env.PORT || 5000;
 dotenv.config();
 
@@ -18,7 +17,7 @@ app.use(express.json()); // to parse incoming requests from frontend to json pay
 app.use('/api/auth', authRoutes)   // Middleware to perfrom authentication. 
 app.use('/api/user', userRoute)
 app.use('/api/messages',messageRoute)
-app.listen(PORT, ()=>{
+server.listen(PORT, ()=>{
    connectToMongoDB();
    console.log(`Server is running at PORT ${PORT}`);
 })
