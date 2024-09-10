@@ -14,7 +14,7 @@ export const SocketContextProvider =({children})=>{
     const{authUser}=useAuthContext();
     useEffect(()=>{
        if(authUser){
-         const socket = io("https://chat-application-zebt.onrender.com/",{
+         const socket = io("https://chatapplication-production-d3b9.up.railway.ap",{
             query:{
                userId:authUser._id,
             },
