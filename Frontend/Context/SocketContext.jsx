@@ -14,7 +14,7 @@ export const SocketContextProvider =({children})=>{
     const{authUser}=useAuthContext();
     useEffect(()=>{
        if(authUser){
-         const socket = io("https://chatapplication-production-d3b9.up.railway.ap",{
+         const socket = io("https://chatapplication-production-d3b9.up.railway.app",{
             query:{
                userId:authUser._id,
             },
